@@ -1,46 +1,46 @@
-# Astro Starter Kit: Basics
+# Portafolio personal
+
+Portafolio personal construido con Astro y preparado para desplegarse en Cloudflare Pages.
+
+## Desarrollo local
+
+Requisitos:
+
+- Node.js `22.12.0` o superior
+- pnpm `11.25.0`
 
 ```sh
-pnpm create astro@latest -- --template basics
+pnpm install
+pnpm dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+El sitio estara disponible en `http://localhost:4321`.
 
-## 🚀 Project Structure
+## Build de produccion
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```sh
+pnpm build
+pnpm preview
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+El build estatico se genera en `dist/`.
 
-## 🧞 Commands
+## Despliegue en Cloudflare Pages
 
-All commands are run from the root of the project, from a terminal:
+En Cloudflare Pages, conecta el repositorio y configura:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+| Configuracion | Valor |
+| --- | --- |
+| Framework preset | Astro |
+| Build command | `pnpm build` |
+| Build output directory | `dist` |
+| Node.js version | `22.12.0` o superior |
+| pnpm version | `11.25.0` |
 
-## 👀 Want to learn more?
+El archivo `wrangler.toml` tambien declara `dist` como salida para despliegues mediante Wrangler. Para desplegar desde la CLI:
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+```sh
+pnpm dlx wrangler pages deploy dist --project-name portafolio-astro
+```
+
+El nombre del proyecto debe coincidir con el creado en Cloudflare Pages.
